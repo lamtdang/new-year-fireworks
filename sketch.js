@@ -9,6 +9,8 @@ function preload() {
   font = loadFont('assets/Pesta Tahun Baru 400.ttf');
   // song = loadSound('assets/Abba_-_Happy_New_Year.mp3');
   song = new Audio('assets/Abba_-_Happy_New_Year.mp3')
+  song.autoplay = true
+  song.muted = true
 }
 
 function setup() {
@@ -28,7 +30,7 @@ function draw() {
   colorMode(RGB);
   background(22, 27, 54);
   strokeWeight(3);
-  var countDownDate = new Date("Jan 31, 2022 14:02:00").getTime()
+  var countDownDate = new Date("Jan 31, 2022 15:20:00").getTime()
   var now = new Date().getTime()
   var distance = countDownDate - now;
   var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -41,11 +43,10 @@ function draw() {
   if (distance > 0) {
     countDown(hours, minutes, seconds)
   } else {
-    if (song.paused) {
-      song.autoplay = true
-      // song.play()
+    if (song.muted) {
+      song.currentTime = 0
+      song.muted = false
     }
-    // songTemp.autoplay = true
     drawWords()
 
   if (random(1) < 0.02) {                   //randomly adds new fireworks
