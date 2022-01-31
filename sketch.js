@@ -28,7 +28,7 @@ function draw() {
   colorMode(RGB);
   background(22, 27, 54);
   strokeWeight(3);
-  var countDownDate = new Date("Jan 31, 2022 14:58:00").getTime()
+  var countDownDate = new Date("Jan 31, 2022 14:02:00").getTime()
   var now = new Date().getTime()
   var distance = countDownDate - now;
   var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -42,8 +42,8 @@ function draw() {
     countDown(hours, minutes, seconds)
   } else {
     if (song.paused) {
-      // song.autoplay = true
-      song.play()
+      song.autoplay = true
+      // song.play()
     }
     // songTemp.autoplay = true
     drawWords()
